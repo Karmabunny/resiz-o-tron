@@ -50,6 +50,7 @@
             this.btnSaveDest = new System.Windows.Forms.Button();
             this.btnBeginResize = new System.Windows.Forms.Button();
             this.timThumbnails = new System.Windows.Forms.Timer(this.components);
+            this.btnAbout = new System.Windows.Forms.Button();
             this.grpQueue.SuspendLayout();
             this.grpSettings.SuspendLayout();
             this.grpSave.SuspendLayout();
@@ -247,12 +248,24 @@
             // 
             this.timThumbnails.Tick += new System.EventHandler(this.timThumbnails_Tick);
             // 
+            // btnAbout
+            // 
+            this.btnAbout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAbout.Location = new System.Drawing.Point(12, 477);
+            this.btnAbout.Name = "btnAbout";
+            this.btnAbout.Size = new System.Drawing.Size(95, 24);
+            this.btnAbout.TabIndex = 10;
+            this.btnAbout.Text = "&About...";
+            this.btnAbout.UseVisualStyleBackColor = true;
+            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
+            // 
             // frmMain
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(674, 513);
+            this.Controls.Add(this.btnAbout);
             this.Controls.Add(this.btnBeginResize);
             this.Controls.Add(this.grpSave);
             this.Controls.Add(this.grpSettings);
@@ -294,6 +307,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtJpegQty;
         private System.Windows.Forms.Timer timThumbnails;
+        private System.Windows.Forms.Button btnAbout;
     }
 }
 

@@ -28,6 +28,16 @@ namespace ReallyEasyResize
 
 
         /**
+         * About box button
+         **/
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            frmAbout f = new frmAbout();
+            f.ShowDialog();
+        }
+
+
+        /**
          * Adds a file into the queue
          */
         private void addFileToQueue(string path)
