@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -32,29 +32,44 @@ namespace ReallyEasyResize
          */
         public void run()
         {
+            int failures = 0;
+
             foreach (string path in this.srcPaths) {
-                createSmallerImage(path);
+                bool result = createSmallerImage(path);
+                if (result == false) {
+                    failures++;
+                }
+
                 GC.Collect();
                 System.Threading.Thread.Sleep(100);
                 this.progressForm.Invoke(new frmProgress.ProgressDelegate(this.progressForm.Increment));
             }
+
+            // TODO: Do something with failures var
         }
 
 
         /**
          * Do the resize - in it's own method to help GC
-         * TODO: Lots of error handling
          */
-        private void createSmallerImage(string path)
+        private bool createSmallerImage(string path)
         {
+            Bitmap src;
+            Bitmap dest;
+
             ImageFormat fmt = Resizer.formatFromExt(path);
             if (fmt == null) {
-                return;
+                return false;
             }
 
-            Bitmap src = new Bitmap(path);
+            // Load original
+            try {
+                src = new Bitmap(path);
+            } catch (Exception) {
+                return false;
+            }
 
-            // Do the resize
+            // Calculate correct size with aspect ratio smarts
             Rectangle size = Resizer.calcDestSize(src, this.desiredWidth, this.desiredHeight);
 
             // If original is smaller than desired, do nothing
@@ -63,9 +78,18 @@ namespace ReallyEasyResize
                 size.Height = src.Height;
             }
 
-            Bitmap dest = new Bitmap(size.Width, size.Height);
+            // Create destination obj; this might fail if not enough memory
+            try {
+                dest = new Bitmap(size.Width, size.Height);
+            } catch (Exception) {
+                src.Dispose();
+                return false;
+            }
+
+            // Draw the image
             Graphics g = Graphics.FromImage(dest);
             g.DrawImage(src, size);
+            src.Dispose();
 
             // Prepare encoder
             ImageCodecInfo enc = this.getEncoder(fmt);
@@ -77,10 +101,16 @@ namespace ReallyEasyResize
                 encParams.Param[0] = new EncoderParameter(Encoder.Quality, jpegQty);
             }
 
-            dest.Save(destDir + Path.GetFileNameWithoutExtension(path) + Resizer.extFromFormat(fmt), enc, encParams);
+            // Save destination file
+            try {
+                dest.Save(destDir + Path.GetFileNameWithoutExtension(path) + Resizer.extFromFormat(fmt), enc, encParams);
+            } catch (Exception) {
+                dest.Dispose();
+                return false;
+            }
 
-            src.Dispose();
             dest.Dispose();
+            return true;
         }
 
 

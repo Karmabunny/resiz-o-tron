@@ -113,7 +113,6 @@ namespace ReallyEasyResize
 
         /**
          * Scales images
-         * TODO: Maintain aspect ratio
          */
         private Bitmap doScale(Bitmap src, int desiredWidth, int desiredHeight)
         {
