@@ -21,8 +21,8 @@ namespace ReallyEasyResize
 
             // Set the default save path
             txtSaveDest.Text = System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            txtSaveDest.Text.TrimEnd('\\');
-            txtSaveDest.Text += "\\Resize_";
+            txtSaveDest.Text.TrimEnd(Path.DirectorySeparatorChar);
+            txtSaveDest.Text += Path.DirectorySeparatorChar + "Resize_";
             txtSaveDest.Text += System.DateTime.Now.ToString("dd_MMM_yyyy");
         }
 
@@ -232,24 +232,42 @@ namespace ReallyEasyResize
 
         private void btnBeginResize_Click(object sender, EventArgs e)
         {
+            if (lstQueue.Items.Count == 0) {
+                MessageBox.Show("No images have been selected for resizing");
+                return;
+            }
+
+            frmProgress prog = new frmProgress(this);
+            Resizer r = new Resizer(prog);
+
+            if (!int.TryParse(txtWidth.Text, out r.desiredWidth)) {
+                MessageBox.Show("Unable to parse 'width' field as a number");
+                return;
+            }
+
+            if (!int.TryParse(txtHeight.Text, out r.desiredHeight)) {
+                MessageBox.Show("Unable to parse 'height' field as a number");
+                return;
+            }
+
+            if (!long.TryParse(txtJpegQty.Text, out r.jpegQty)) {
+                MessageBox.Show("Unable to parse 'jpg qty' field as a number");
+                return;
+            }
+
+            prog.Setup(lstQueue.Items.Count);
+            prog.Show();
+
             grpQueue.Enabled = false;
             grpSettings.Enabled = false;
             grpSave.Enabled = false;
             btnBeginResize.Enabled = false;
 
-            frmProgress prog = new frmProgress(this);
-            prog.Setup(lstQueue.Items.Count);
-            prog.Show();
-
-            // TODO: Error handling
-            Resizer r = new Resizer(prog);
             r.destDir = txtSaveDest.Text;
-            r.destDir.Replace("\\", "").TrimEnd('\\');    // Cleanup
-            r.destDir += '\\';     // Ensure a trailing slash
-            r.desiredWidth = int.Parse(txtWidth.Text);
-            r.desiredHeight = int.Parse(txtHeight.Text);
-            r.jpegQty = long.Parse(txtJpegQty.Text);
-
+            if (!r.destDir.EndsWith(Path.DirectorySeparatorChar.ToString())) {
+                r.destDir += Path.DirectorySeparatorChar;
+            }
+            
             if (!Directory.Exists(r.destDir)) {
                 Directory.CreateDirectory(r.destDir);
             }
