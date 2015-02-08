@@ -1,4 +1,4 @@
-﻿namespace ReallyEasyResize
+namespace ReallyEasyResize
 {
     partial class frmAbout
     {
@@ -61,7 +61,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(118, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Resize-o-Tron 5000";
+            this.label1.Text = "Resiz-o-Tron 5000";
             // 
             // linkLabel1
             // 
@@ -101,7 +101,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAbout";
-            this.Text = "About resize-o-tron 5000";
+            this.Text = "About Resiz-o-Tron 5000";
             this.ResumeLayout(false);
             this.PerformLayout();
 

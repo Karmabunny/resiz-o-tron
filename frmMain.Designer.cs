@@ -1,4 +1,4 @@
-﻿namespace ReallyEasyResize
+namespace ReallyEasyResize
 {
     partial class frmMain
     {
@@ -250,7 +250,7 @@
             // 
             // btnAbout
             // 
-            this.btnAbout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAbout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAbout.Location = new System.Drawing.Point(12, 477);
             this.btnAbout.Name = "btnAbout";
             this.btnAbout.Size = new System.Drawing.Size(95, 24);
@@ -272,7 +272,7 @@
             this.Controls.Add(this.grpQueue);
             this.MinimumSize = new System.Drawing.Size(483, 393);
             this.Name = "frmMain";
-            this.Text = "Really easy image resizer";
+            this.Text = "Resiz-o-Tron 5000";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.frmMain_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.frmMain_DragEnter);
             this.grpQueue.ResumeLayout(false);
