@@ -1,4 +1,4 @@
-# resiz-o-tron-5000
+# resiz-o-tron
 This is a simple image resizer tool for Windows written in C#.
 
 It is designed to solve a problem we are having wiith our clients - images taken with modern

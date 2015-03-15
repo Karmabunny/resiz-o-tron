@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Resiz-o-Tron 5000")]
+[assembly: AssemblyTitle("Resiz-o-Tron")]
 [assembly: AssemblyDescription("A simple image resizer")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Karmabunny Pty Ltd")]

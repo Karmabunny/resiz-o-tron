@@ -272,7 +272,7 @@ namespace ReallyEasyResize
             this.Controls.Add(this.grpQueue);
             this.MinimumSize = new System.Drawing.Size(483, 393);
             this.Name = "frmMain";
-            this.Text = "Resiz-o-Tron 5000";
+            this.Text = "Resiz-o-Tron";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.frmMain_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.frmMain_DragEnter);
             this.grpQueue.ResumeLayout(false);

@@ -61,7 +61,7 @@ namespace ReallyEasyResize
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(118, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Resiz-o-Tron 5000";
+            this.label1.Text = "Resiz-o-Tron";
             // 
             // linkLabel1
             // 
@@ -82,7 +82,7 @@ namespace ReallyEasyResize
             this.linkLabel2.Size = new System.Drawing.Size(242, 13);
             this.linkLabel2.TabIndex = 5;
             this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "https://github.com/Karmabunny/resiz-o-tron-5000";
+            this.linkLabel2.Text = "https://github.com/Karmabunny/resiz-o-tron";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.clickLink);
             // 
             // frmAbout
@@ -101,7 +101,7 @@ namespace ReallyEasyResize
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAbout";
-            this.Text = "About Resiz-o-Tron 5000";
+            this.Text = "About Resiz-o-Tron";
             this.ResumeLayout(false);
             this.PerformLayout();
 
