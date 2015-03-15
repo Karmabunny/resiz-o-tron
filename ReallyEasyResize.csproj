@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ReallyEasyResize</RootNamespace>
-    <AssemblyName>ReallyEasyResize</AssemblyName>
+    <AssemblyName>ResizOTron</AssemblyName>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
