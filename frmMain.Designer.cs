@@ -29,6 +29,7 @@ namespace ReallyEasyResize
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.btnSelFiles = new System.Windows.Forms.Button();
             this.btnSelFolder = new System.Windows.Forms.Button();
             this.lstQueue = new System.Windows.Forms.ListView();
@@ -270,6 +271,7 @@ namespace ReallyEasyResize
             this.Controls.Add(this.grpSave);
             this.Controls.Add(this.grpSettings);
             this.Controls.Add(this.grpQueue);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(483, 393);
             this.Name = "frmMain";
             this.Text = "Resiz-o-Tron";
