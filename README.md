@@ -23,8 +23,10 @@ It is designed to solve a problem we are having with our clients - images taken 
 digital cameras are too large, taking forever to upload and using a lot of ram when doing a server-side
 image resize for web use.
 
-This tool allows for esy bulk residing of images prior to upload into the CMS; although it can be used for other
+This tool allows for easy bulk residing of images prior to upload into the CMS; although it can be used for other
 purposes too.
+
+We also needed the software to be small for quick downloads, and not have many dependencies. This actually allows it to be used without an installer which can allow for quick one-off usage.
 
 
 ## Supported operating systems
