@@ -1,5 +1,5 @@
 # resiz-o-tron
-This is a simple image resizer tool for Windows written in C#.
+This is a simple image resizer tool for Windows written in C#. No installation is required. Simply extract the .zip file and then run `ResizOTron.exe`.
 
 ![Main screen of resiz-o-tron](https://raw.githubusercontent.com/wiki/Karmabunny/resiz-o-tron/images/main_screen.png)
 
@@ -13,10 +13,10 @@ purposes too.
 
 ## Supported operating systems
 
-The resiz-o-tron has been tested with:
+The resiz-o-tron uses the .NET framework v2.0 and has been tested with:
 - Windows XP
 - Windows Vista
 - Windows 7
 - Windows 8.1
 
-It also works correctly under Wine and has been tested on Linux.
+It also works correctly under Mono and has been tested on Ubuntu Linux.
