@@ -194,3 +194,8 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+
+
+# Distributed archives
+resiz-o-tron-*.tar.bz2
+resiz-o-tron-*.zip
