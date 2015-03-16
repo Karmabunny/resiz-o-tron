@@ -13,6 +13,8 @@ This is a simple image resizer tool for Windows written in C#. No installation i
 - Easy to use.
 - Runs on many operating systems.
 - No installation required.
+- Very fast processing with low memory requirements.
+- Able to process hundreds of images without issues.
 
 
 ## Why did we create this?
