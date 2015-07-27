@@ -54,38 +54,7 @@ namespace ReallyEasyResize
             item.Text = Path.GetFileName(path);
             item.ToolTipText = path;
             item.Tag = path;
-            item.ImageIndex = -1;
             lstQueue.Items.Add(item);
-
-            timThumbnails.Enabled = true;
-            //this.Refresh();
-        }
-
-
-        /**
-         * Process a single thumbnail per tick
-         * If nothing is found to be done, the timer is disabled.
-         */
-        private void timThumbnails_Tick(object sender, EventArgs e)
-        {
-            foreach (ListViewItem it in lstQueue.Items) {
-                if (it.ImageIndex == -1) {
-                    try {
-                        Bitmap orig = new Bitmap((string)it.Tag);
-                        Bitmap icon = doScale(orig, imgQueue.ImageSize.Width, imgQueue.ImageSize.Height);
-                        orig.Dispose();
-                        imgQueue.Images.Add(icon);
-                        it.ImageIndex = imgQueue.Images.Count - 1;
-                    } catch {
-                        lstQueue.Items.Remove(it);
-                    }
-
-                    // Only process a max of one image per timer tick
-                    return;
-                }
-            }
-
-            timThumbnails.Enabled = false;
         }
 
 

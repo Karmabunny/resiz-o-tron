@@ -34,7 +34,6 @@ namespace ReallyEasyResize
             this.btnSelFolder = new System.Windows.Forms.Button();
             this.btnClearQueue = new System.Windows.Forms.Button();
             this.lstQueue = new System.Windows.Forms.ListView();
-            this.imgQueue = new System.Windows.Forms.ImageList(this.components);
             this.grpQueue = new System.Windows.Forms.GroupBox();
             this.diaSelFiles = new System.Windows.Forms.OpenFileDialog();
             this.diaSaveDest = new System.Windows.Forms.FolderBrowserDialog();
@@ -51,7 +50,6 @@ namespace ReallyEasyResize
             this.label1 = new System.Windows.Forms.Label();
             this.btnSaveDest = new System.Windows.Forms.Button();
             this.btnBeginResize = new System.Windows.Forms.Button();
-            this.timThumbnails = new System.Windows.Forms.Timer(this.components);
             this.btnAbout = new System.Windows.Forms.Button();
             this.grpQueue.SuspendLayout();
             this.grpSettings.SuspendLayout();
@@ -96,21 +94,13 @@ namespace ReallyEasyResize
             this.lstQueue.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.lstQueue.LargeImageList = this.imgQueue;
             this.lstQueue.Location = new System.Drawing.Point(8, 21);
             this.lstQueue.Margin = new System.Windows.Forms.Padding(5);
             this.lstQueue.Name = "lstQueue";
             this.lstQueue.Size = new System.Drawing.Size(500, 229);
-            this.lstQueue.SmallImageList = this.imgQueue;
             this.lstQueue.TabIndex = 1;
             this.lstQueue.UseCompatibleStateImageBehavior = false;
-            this.lstQueue.View = System.Windows.Forms.View.Tile;
-            // 
-            // imgQueue
-            // 
-            this.imgQueue.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-            this.imgQueue.ImageSize = new System.Drawing.Size(64, 64);
-            this.imgQueue.TransparentColor = System.Drawing.Color.Transparent;
+            this.lstQueue.View = System.Windows.Forms.View.List;
             // 
             // grpQueue
             // 
@@ -258,10 +248,6 @@ namespace ReallyEasyResize
             this.btnBeginResize.UseVisualStyleBackColor = true;
             this.btnBeginResize.Click += new System.EventHandler(this.btnBeginResize_Click);
             // 
-            // timThumbnails
-            // 
-            this.timThumbnails.Tick += new System.EventHandler(this.timThumbnails_Tick);
-            // 
             // btnAbout
             // 
             this.btnAbout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -315,14 +301,12 @@ namespace ReallyEasyResize
         private System.Windows.Forms.TextBox txtSaveDest;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnBeginResize;
-        private System.Windows.Forms.ImageList imgQueue;
         private System.Windows.Forms.TextBox txtHeight;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtWidth;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtJpegQty;
-        private System.Windows.Forms.Timer timThumbnails;
         private System.Windows.Forms.Button btnAbout;
     }
 }
