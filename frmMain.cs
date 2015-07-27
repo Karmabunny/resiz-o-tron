@@ -184,6 +184,17 @@ namespace ReallyEasyResize
 
 
         /**
+         * Dialog UI for adding folders to the queue
+         */
+        private void btnClearQueue_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to clear the image list?", null, System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes) {
+                lstQueue.Items.Clear();
+            }
+        }
+
+
+        /**
          * Set drag-drop icon but only when dropping files
          */
         private void frmMain_DragEnter(object sender, DragEventArgs e)

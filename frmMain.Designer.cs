@@ -32,6 +32,7 @@ namespace ReallyEasyResize
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.btnSelFiles = new System.Windows.Forms.Button();
             this.btnSelFolder = new System.Windows.Forms.Button();
+            this.btnClearQueue = new System.Windows.Forms.Button();
             this.lstQueue = new System.Windows.Forms.ListView();
             this.imgQueue = new System.Windows.Forms.ImageList(this.components);
             this.grpQueue = new System.Windows.Forms.GroupBox();
@@ -79,6 +80,17 @@ namespace ReallyEasyResize
             this.btnSelFolder.UseVisualStyleBackColor = true;
             this.btnSelFolder.Click += new System.EventHandler(this.btnSelFolder_Click);
             // 
+            // btnClearQueue
+            // 
+            this.btnClearQueue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClearQueue.Location = new System.Drawing.Point(516, 77);
+            this.btnClearQueue.Name = "btnClearQueue";
+            this.btnClearQueue.Size = new System.Drawing.Size(128, 23);
+            this.btnClearQueue.TabIndex = 3;
+            this.btnClearQueue.Text = "&Clear list";
+            this.btnClearQueue.UseVisualStyleBackColor = true;
+            this.btnClearQueue.Click += new System.EventHandler(this.btnClearQueue_Click);
+            // 
             // lstQueue
             // 
             this.lstQueue.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -108,6 +120,7 @@ namespace ReallyEasyResize
             this.grpQueue.Controls.Add(this.btnSelFiles);
             this.grpQueue.Controls.Add(this.lstQueue);
             this.grpQueue.Controls.Add(this.btnSelFolder);
+            this.grpQueue.Controls.Add(this.btnClearQueue);
             this.grpQueue.Location = new System.Drawing.Point(12, 12);
             this.grpQueue.Name = "grpQueue";
             this.grpQueue.Size = new System.Drawing.Size(650, 258);
@@ -290,6 +303,7 @@ namespace ReallyEasyResize
 
         private System.Windows.Forms.Button btnSelFolder;
         private System.Windows.Forms.Button btnSelFiles;
+        private System.Windows.Forms.Button btnClearQueue;
         private System.Windows.Forms.ListView lstQueue;
         private System.Windows.Forms.GroupBox grpQueue;
         private System.Windows.Forms.OpenFileDialog diaSelFiles;
