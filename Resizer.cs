@@ -121,6 +121,7 @@ namespace ReallyEasyResize
         {
             switch (Path.GetExtension(path).ToLower()) {
                 case ".jpg":
+                case ".jpeg":
                 case ".jpe":
                 case ".jpgp":
                 case ".jif":
