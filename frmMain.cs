@@ -236,29 +236,40 @@ namespace ReallyEasyResize
 
         private void btnBeginResize_Click(object sender, EventArgs e)
         {
+            int i = 0;
+
             if (lstQueue.Items.Count == 0) {
                 MessageBox.Show("No images have been selected for resizing");
                 return;
             }
 
-            frmProgress prog = new frmProgress(this);
-            Resizer r = new Resizer(prog);
-
-            if (!int.TryParse(txtWidth.Text, out r.desiredWidth)) {
+            int desiredWidth;
+            if (!int.TryParse(txtWidth.Text, out desiredWidth)) {
                 MessageBox.Show("Unable to parse 'width' field as a number");
                 return;
             }
 
-            if (!int.TryParse(txtHeight.Text, out r.desiredHeight)) {
+            int desiredHeight;
+            if (!int.TryParse(txtHeight.Text, out desiredHeight)) {
                 MessageBox.Show("Unable to parse 'height' field as a number");
                 return;
             }
 
-            if (!long.TryParse(txtJpegQty.Text, out r.jpegQty)) {
+            long jpegQty;
+            if (!long.TryParse(txtJpegQty.Text, out jpegQty)) {
                 MessageBox.Show("Unable to parse 'jpg qty' field as a number");
                 return;
             }
 
+            string destDir = txtSaveDest.Text;
+            if (!destDir.EndsWith(Path.DirectorySeparatorChar.ToString())) {
+                destDir += Path.DirectorySeparatorChar;
+            }
+            if (!Directory.Exists(destDir)) {
+                Directory.CreateDirectory(destDir);
+            }
+
+            frmProgress prog = new frmProgress(this);
             prog.Setup(lstQueue.Items.Count);
             prog.Show();
 
@@ -267,22 +278,32 @@ namespace ReallyEasyResize
             grpSave.Enabled = false;
             btnBeginResize.Enabled = false;
 
-            r.destDir = txtSaveDest.Text;
-            if (!r.destDir.EndsWith(Path.DirectorySeparatorChar.ToString())) {
-                r.destDir += Path.DirectorySeparatorChar;
-            }
-            
-            if (!Directory.Exists(r.destDir)) {
-                Directory.CreateDirectory(r.destDir);
+            int numThreads = Environment.ProcessorCount;
+            if (lstQueue.Items.Count <= numThreads) {
+                numThreads = 1;
             }
 
+            List<Resizer> resizers = new List<Resizer>();
+            for (i = 0; i < numThreads; ++i) {
+                Resizer r = new Resizer (prog);
+                r.desiredWidth = desiredWidth;
+                r.desiredHeight = desiredHeight;
+                r.jpegQty = jpegQty;
+                r.destDir = destDir;
+                resizers.Add(r);
+            }
+
+            i = 0;
             foreach (ListViewItem it in lstQueue.Items) {
-                r.srcPaths.Add((string)it.Tag);
+                resizers[i % numThreads].srcPaths.Add((string)it.Tag);
+                i++;
             }
 
-            Thread t = new Thread(new ThreadStart(r.run));
-            t.IsBackground = true;
-            t.Start();
+            for (i = 0; i < numThreads; ++i) {
+                Thread t = new Thread(new ThreadStart(resizers[i].run));
+                t.IsBackground = true;
+                t.Start();
+            }
         }
 
         public void Complete()
